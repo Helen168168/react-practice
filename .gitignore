@@ -1,5 +1,11 @@
-# Object file
-*.o
+# Lock File
+package-lock.json
+yarn.lock
 
-# Ada Library Information
-*.ali
+#package
+/node_modules/*
+/dist
+
+#local env files
+.env.local
+.env.*.local
