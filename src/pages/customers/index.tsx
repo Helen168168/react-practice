@@ -2,7 +2,9 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Form, Input, Button, Select, Row, Col, Table } from "antd";
 import { hot } from "react-hot-loader/root";
+import { testServiceInterface } from '../../api/index'
 import objCustomerData from './const'
+
 const { Option } = Select;
 
 const objSelectData = {
@@ -12,20 +14,29 @@ const objSelectData = {
 }
 
 const objRowBtn = {
-        title: '操作',
-        dataIndex: 'operation',
-        render: (_: any, record: any) => (
-            <Button type="primary" htmlType="submit">
-                delete
-            </Button>
-        )
+    title: '操作',
+    dataIndex: 'operation',
+    render: (_: any, record: any) => (
+        <Button type="primary" htmlType="submit">
+            delete
+        </Button>
+    )
 }
 
-class CustomerList extends React.Component {
+interface isState {
+    arrTestData: Array<Object>
+}
+
+class CustomerList extends React.Component<any, isState> {
     constructor(props: any) {
         super(props)
+        this.state = {
+            arrTestData: []
+        }
     }
-
+    componentDidMount() {
+        this.getDicData()
+    }
     render() {
         return (
             <div>
@@ -33,16 +44,16 @@ class CustomerList extends React.Component {
                     <Row gutter={30}>
                         {
                             objCustomerData.arrFormData.map(ObjItem => {
-                                if(ObjItem.type === 'input') {
-                                    return  <Col span={5}>
-                                        <Form.Item label={ ObjItem.label } name={ ObjItem.model }>
+                                if (ObjItem.type === 'input') {
+                                    return <Col span={5}>
+                                        <Form.Item label={ObjItem.label} name={ObjItem.model}>
                                             <Input />
                                         </Form.Item>
                                     </Col>
-                                } else if(ObjItem.type === 'select') {
+                                } else if (ObjItem.type === 'select') {
                                     return <Col span={5}>
                                         <Form.Item
-                                            label={ ObjItem.label } name={ ObjItem.model }
+                                            label={ObjItem.label} name={ObjItem.model}
                                             rules={[
                                                 {
                                                     required: true,
@@ -50,15 +61,23 @@ class CustomerList extends React.Component {
                                                 }
                                             ]}
                                         >
-                                        <Select>
-                                            { this.judgeEmpty(ObjItem.arrOptionData) }
-                                        </Select>
-                                    </Form.Item>
-                                </Col>
+                                            <Select>
+                                                {
+                                                    this.state.arrTestData.map((objOption: any, numIndex: Number) => {
+                                                        return <Option 
+                                                        key={objOption.val} 
+                                                        value={objOption.val}>
+                                                            {objOption.name}
+                                                        </Option>
+                                                    })
+                                                }
+                                            </Select>
+                                        </Form.Item>
+                                    </Col>
                                 }
                             })
                         }
-                        
+
                         <Col span={4} style={{ textAlign: "right" }}>
                             <Form.Item>
                                 <Button type="primary" htmlType="submit">
@@ -68,16 +87,22 @@ class CustomerList extends React.Component {
                         </Col>
                     </Row>
                 </Form>
-                <Table dataSource={objCustomerData.dataSource} columns={ [...objCustomerData.columns, objRowBtn] }></Table>
+                <Table dataSource={objCustomerData.dataSource} columns={[...objCustomerData.columns, objRowBtn]}></Table>
             </div>
         );
     }
-    judgeEmpty(arrData: string): void {
-        if(arrData) {
-            return objSelectData[arrData].map((objOption: any) => {
-                return <Option value="jack">{objOption}</Option>
-            })
+
+    getDicData() {
+        const that = this;
+        let objParams = {
+            code: 'freight_work_order_status'
         }
+        testServiceInterface.getDictData(objParams).then(res => {
+            that.setState({
+                arrTestData: res.data
+            });
+            
+        }).catch(err => {})
     }
 }
 
