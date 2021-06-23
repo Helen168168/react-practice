@@ -1,5 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
+import store from '../../store'
 import { Form, Input, Button, Select, Row, Col, Table } from "antd";
 import { hot } from "react-hot-loader/root";
 import { testServiceInterface } from '../../api/index'
@@ -25,13 +26,15 @@ const objRowBtn = {
 
 interface isState {
     arrTestData: Array<Object>
+    arrTestList: Array<Number>
 }
 
 class CustomerList extends React.Component<any, isState> {
     constructor(props: any) {
         super(props)
         this.state = {
-            arrTestData: []
+            arrTestData: [],
+            arrTestList: store.getState().list
         }
     }
     componentDidMount() {
@@ -40,6 +43,9 @@ class CustomerList extends React.Component<any, isState> {
     render() {
         return (
             <div>
+                <ul>
+                    <li>{ this.state.arrTestList}</li>
+                </ul>
                 <Form>
                     <Row gutter={30}>
                         {
