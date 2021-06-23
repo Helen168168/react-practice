@@ -8,4 +8,9 @@ import reducer from './redecer'
 
 const store = createStore(reducer)
 
+store.dispatch({
+    type: 'ADD_TODO',
+    payload: 'Learn Redux'
+})
+
 export default store

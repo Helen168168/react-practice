@@ -26,7 +26,7 @@ const objRowBtn = {
 
 interface isState {
     arrTestData: Array<Object>
-    arrTestList: Array<Number>
+    arrTestList: Number
 }
 
 class CustomerList extends React.Component<any, isState> {
@@ -34,7 +34,7 @@ class CustomerList extends React.Component<any, isState> {
         super(props)
         this.state = {
             arrTestData: [],
-            arrTestList: store.getState().list
+            arrTestList: store.getState()
         }
     }
     componentDidMount() {
@@ -83,7 +83,6 @@ class CustomerList extends React.Component<any, isState> {
                                 }
                             })
                         }
-
                         <Col span={4} style={{ textAlign: "right" }}>
                             <Form.Item>
                                 <Button type="primary" htmlType="submit">
