@@ -1,0 +1,51 @@
+{
+    "editor.tabSize": 2,
+    "workbench.editor.enablePreview": false,
+    "eslint.format.enable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll.stylelint": true,
+    },
+    "eslint.probe": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+    ],
+    "files.associations": {
+        "*.env.*": "dotenv",
+        "*.json": "jsonc",
+    },
+    "stylelint.validate": [
+        "css",
+        "scss",
+        "sass",
+        "less",
+        "stylus",
+        "postcss",
+        "html",
+        "vue"
+    ],
+    "cSpell.words": [],
+    "cssvar.files": [
+        "*/src/styles/*"
+    ],
+    "cssvar.extensions": [
+        "css",
+        "scss",
+        "sass",
+        "less",
+        "postcss",
+        "vue",
+        "svelte",
+        "ts",
+        "tsx",
+        "jsx",
+        "js"
+    ],
+    "volar.autoCompleteRefs": true,
+    "cssVariables.lookupFiles": [
+        "**/var.scss"
+    ]
+}
