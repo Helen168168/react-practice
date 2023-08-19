@@ -5,7 +5,10 @@ module.exports = {
         "node": true,
         "commonjs": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -21,10 +24,9 @@ module.exports = {
             "presets": ["@babel/preset-react"]
          },
     },
-    
     "parser": "@babel/eslint-parser",
     "plugins": [
-        "react"
+       "react"
     ],
     "rules": {
         "linebreak-style": [
@@ -36,6 +38,7 @@ module.exports = {
         "comma-dangle": 0,
         "no-unused-vars": 0,
         "no-console": 0,
+        "no-debugger": "off",
         "no-const-assign": 2,
         "no-dupe-class-members": 2,
         "no-duplicate-case": 2,
@@ -54,6 +57,7 @@ module.exports = {
         "new-parens": 2,
         "no-array-constructor": 2,
         "no-class-assign": 2,
-        "no-cond-assign": 2
+        "no-cond-assign": 2,
+        
     }
 };

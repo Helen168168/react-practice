@@ -1,2 +1,7 @@
 # invalid
 src/*.test.js
+build
+dist
+src/assets
+public
+node_modules

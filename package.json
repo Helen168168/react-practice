@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@ant-design/icons": "^5.2.5",
         "@babel/eslint-parser": "^7.22.10",
         "@babel/preset-react": "^7.22.5",
         "@commitlint/cli": "^17.7.1",
@@ -10,8 +11,10 @@
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
+        "antd": "^5.8.4",
         "babel": "^6.23.0",
         "husky": "^8.0.3",
+        "mockjs": "^1.1.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-hot-loader": "^4.13.1",
