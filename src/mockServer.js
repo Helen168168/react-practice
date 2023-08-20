@@ -1,5 +1,5 @@
 import Mock from 'mockjs'
-import data from './mock/index'
+//import data from './mock/index'
 
 
 Mock.setup({

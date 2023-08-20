@@ -1,7 +1,6 @@
 # invalid
-src/*.test.js
+src/views/*.test.js
 build
 dist
-src/assets
 public
 node_modules
