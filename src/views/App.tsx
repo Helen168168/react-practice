@@ -1,9 +1,9 @@
 import { Avatar, Button, List } from 'antd'
-import { useState } from "react"
+import { useState, } from "react"
 import { getResouceList } from '../api/list'
-import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
 import { addTodo } from '../redux/actions/demoAction'
+import { useSelector, useDispatch } from 'react-redux'
+
 
 interface IListData {
   title: string;
@@ -12,16 +12,19 @@ interface IListData {
   logo: string;
 }
 
-const appRedux: React.FC<{ dispatch: Dispatch }> = ({ dispatch }: { dispatch: Dispatch }) => {
+export const App: React.FC = () => {
+  const dispatch = useDispatch();
   const [listData, setListData] = useState([] as IListData[]);
+  dispatch(addTodo('hello, world'));
+  let { message } = useSelector((state: { demoReducer: { text: string } }) => ({ message: state.demoReducer.text }))
   function getData() {
-    dispatch(addTodo('first redux object'));
     getResouceList().then(res => {
       setListData(res.data.data)
     }).catch(err => {
       console.log(err)
     })
   }
+
   return (
     <div>
       <Button type="primary" onClick={getData}>Primary Button</Button>
@@ -47,9 +50,10 @@ const appRedux: React.FC<{ dispatch: Dispatch }> = ({ dispatch }: { dispatch: Di
           </List.Item>
         )}
       />
+      <span>{message}</span>
     </div>
   );
 }
-export const App = connect()(appRedux)
+
 
 
