@@ -1,8 +1,8 @@
-import { Avatar, Button, List } from 'antd';
-import  { useState } from "react";
+import { Avatar, Button, List } from 'antd'
+import  { useState } from "react"
 import { getResouceList } from '../api/list'
 import { connect } from 'react-redux'
-import {  Dispatch,  } from 'redux';
+import {  Dispatch } from 'redux'
 import { addTodo } from '../redux/actions/demoAction'
 
 interface IListData {
@@ -12,6 +12,7 @@ interface IListData {
   logo: string;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 const App = ({ dispatch }: { dispatch: Dispatch }) => { 
   const [listData, setListData] = useState([] as IListData[]);
   function getData() {
@@ -50,6 +51,6 @@ const App = ({ dispatch }: { dispatch: Dispatch }) => {
     </>
   );
 } 
-
-export default connect()(App);
+const appRedux = connect()(App)
+export default appRedux;
 
