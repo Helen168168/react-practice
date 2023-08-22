@@ -1,8 +1,8 @@
 import { Avatar, Button, List } from 'antd'
-import  { useState } from "react"
+import { useState } from "react"
 import { getResouceList } from '../api/list'
 import { connect } from 'react-redux'
-import {  Dispatch } from 'redux'
+import { Dispatch } from 'redux'
 import { addTodo } from '../redux/actions/demoAction'
 
 interface IListData {
@@ -12,8 +12,7 @@ interface IListData {
   logo: string;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
-const App = ({ dispatch }: { dispatch: Dispatch }) => { 
+const appRedux: React.FC<{ dispatch: Dispatch }> = ({ dispatch }: { dispatch: Dispatch }) => {
   const [listData, setListData] = useState([] as IListData[]);
   function getData() {
     dispatch(addTodo('first redux object'));
@@ -24,7 +23,7 @@ const App = ({ dispatch }: { dispatch: Dispatch }) => {
     })
   }
   return (
-    <>
+    <div>
       <Button type="primary" onClick={getData}>Primary Button</Button>
       <List
         itemLayout="vertical"
@@ -48,9 +47,9 @@ const App = ({ dispatch }: { dispatch: Dispatch }) => {
           </List.Item>
         )}
       />
-    </>
+    </div>
   );
-} 
-const appRedux = connect()(App)
-export default appRedux;
+}
+export const App = connect()(appRedux)
+
 
