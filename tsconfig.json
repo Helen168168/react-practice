@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -19,12 +20,25 @@
     "isolatedModules": false,
     "noEmit": true,
     "jsx": "react-jsx",
+    "strictNullChecks": true, //非空检查开关，推荐开启。默认为 false。
+    "strictFunctionTypes": true, //函数类型检查开关，推荐开启。默认为 false。
+    "strictPropertyInitialization": true, //属性初始化检查开关，推荐开启。默认为 false。
+    "noUnusedLocals": true,
+    "noUnusedParameters": true, //未使用变量和参数检查开关。推荐开启。
+    "noImplicitReturns": true,
+    "experimentalDecorators": true, //支持 decorator 装饰器语法特性，常用于 React、Vue 等框架中。
     "types": [
-        "jest",
-        "node"
-      ]
+     
+    ]
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "mock"
+  ],
+  "baseUrl": "./",
+  "paths": {
+    "@/*": [
+      "src/*"
+    ]
+  }
 }
