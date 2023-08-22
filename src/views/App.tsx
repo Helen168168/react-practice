@@ -16,7 +16,7 @@ export const App: React.FC = () => {
   const dispatch = useDispatch();
   const [listData, setListData] = useState([] as IListData[]);
   dispatch(addTodo('hello, world'));
-  let { message } = useSelector((state: { demoReducer: { text: string } }) => ({ message: state.demoReducer.text }))
+  const { message } = useSelector((state: { demoReducer: { text: string } }) => ({ message: state.demoReducer.text }))
   function getData() {
     getResouceList().then(res => {
       setListData(res.data.data)
