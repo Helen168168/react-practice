@@ -1,8 +1,7 @@
 import { Avatar, Button, List } from 'antd'
 import { useState, } from "react"
 import { getResouceList } from '../api/list'
-import { addTodo } from '../redux/actions/demoAction'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, shallowEqual } from 'react-redux'
 
 
 interface IListData {
@@ -13,10 +12,9 @@ interface IListData {
 }
 
 export const App: React.FC = () => {
-  const dispatch = useDispatch();
   const [listData, setListData] = useState([] as IListData[]);
-  dispatch(addTodo('hello, world'));
-  const { message } = useSelector((state: { demoReducer: { text: string } }) => ({ message: state.demoReducer.text }))
+  const { text } = useSelector((state: Record<string, Record<string, unknown>>) => state.demoReducer, shallowEqual)
+  
   function getData() {
     getResouceList().then(res => {
       setListData(res.data.data)
@@ -24,7 +22,7 @@ export const App: React.FC = () => {
       console.log(err)
     })
   }
-
+ 
   return (
     <div>
       <Button type="primary" onClick={getData}>Primary Button</Button>
@@ -50,10 +48,8 @@ export const App: React.FC = () => {
           </List.Item>
         )}
       />
-      <span>{message}</span>
+      <span>{text as string}</span>
     </div>
   );
 }
-
-
 

@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "target": "esnext",
+    "module": "ESNext",
     "noImplicitAny": true,
     "sourceMap": true,
     "skipLibCheck": true,
@@ -14,7 +15,6 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": false,
@@ -27,9 +27,7 @@
     "noUnusedParameters": true, //未使用变量和参数检查开关。推荐开启。
     "noImplicitReturns": true,
     "experimentalDecorators": true, //支持 decorator 装饰器语法特性，常用于 React、Vue 等框架中。
-    "types": [
-     
-    ]
+    "types": []
   },
   "include": [
     "src",
